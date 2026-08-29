@@ -1,552 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Course Listing</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
+<style>
     body {
-      background: #f6f7fb;
-      color: #222;
+        font-family: Arial;
+        margin: 0;
+        background-color: #f4f6f8;
     }
 
-    /* Header */
     header {
-      background: #4f46e5;
-      color: white;
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+        background-color: #2563eb;
+        color: white;
+        padding: 20px;
+        text-align: center;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
+    nav {
+        background-color: white;
+        padding: 15px;
+        text-align: center;
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 25px;
-      font-size: 15px;
+        text-decoration: none;
+        color: #2563eb;
+        margin: 20px;
+        font-size: 18px;
     }
 
-    /* Hero */
-    .hero {
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
+    .heading {
+        text-align: center;
+        padding: 30px 20px 10px;
     }
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      font-size: 17px;
-      opacity: 0.9;
-      margin-bottom: 25px;
-    }
-
-    .search-box {
-      max-width: 600px;
-      margin: auto;
-      display: flex;
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .search-box input {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 16px;
-      font-size: 15px;
-    }
-
-    .search-box button {
-      border: none;
-      background: #111827;
-      color: white;
-      padding: 0 25px;
-      cursor: pointer;
-    }
-
-    /* Main */
-    .container {
-      width: 86%;
-      max-width: 1200px;
-      margin: 40px auto;
-    }
-
-    .top-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
-
-    .top-section h2 {
-      font-size: 28px;
-    }
-
-    select {
-      padding: 10px 15px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      background: white;
-      cursor: pointer;
-    }
-
-    /* Categories */
-    .categories {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
-
-    .category {
-      padding: 10px 18px;
-      border-radius: 20px;
-      background: white;
-      border: 1px solid #ddd;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .category:hover,
-    .category.active {
-      background: #4f46e5;
-      color: white;
-      border-color: #4f46e5;
-    }
-
-    /* Course Grid */
-    .course-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .course-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-      transition: 0.3s;
-    }
-
-    .course-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-    }
-
-    .course-image {
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 45px;
-      font-weight: bold;
-    }
-
-    .html {
-      background: linear-gradient(135deg, #f97316, #ef4444);
-    }
-
-    .python {
-      background: linear-gradient(135deg, #2563eb, #facc15);
-    }
-
-    .design {
-      background: linear-gradient(135deg, #ec4899, #8b5cf6);
-    }
-
-    .javascript {
-      background: linear-gradient(135deg, #facc15, #eab308);
-    }
-
-    .data {
-      background: linear-gradient(135deg, #06b6d4, #2563eb);
-    }
-
-    .marketing {
-      background: linear-gradient(135deg, #10b981, #059669);
-    }
-
-    .course-content {
-      padding: 20px;
-    }
-
-    .course-category {
-      color: #4f46e5;
-      font-size: 13px;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    .course-title {
-      font-size: 19px;
-      margin: 8px 0;
-      line-height: 1.4;
-    }
-
-    .instructor {
-      color: #777;
-      font-size: 14px;
-      margin-bottom: 12px;
-    }
-
-    .rating {
-      color: #f59e0b;
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    .rating span {
-      color: #777;
-    }
-
-    .course-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid #eee;
-      padding-top: 15px;
-    }
-
-    .price {
-      font-size: 21px;
-      font-weight: bold;
-    }
-
-    .enroll-btn {
-      background: #4f46e5;
-      color: white;
-      text-decoration: none;
-      padding: 9px 15px;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-
-    .enroll-btn:hover {
-      background: #3730a3;
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 60px;
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 25px;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .course-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      nav a {
-        margin: 0 8px;
-      }
-
-      .hero h1 {
+    .heading h2 {
         font-size: 32px;
-      }
-
-      .top-section {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-      }
-
-      .course-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .search-box button {
-        padding: 0 15px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- Header -->
-  <header>
-    <div class="logo">LearnHub</div>
-
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Courses</a>
-      <a href="#">About</a>
-      <a href="#">Login</a>
-    </nav>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Explore Our Courses</h1>
-    <p>Learn new skills and advance your career with expert-led courses.</p>
-
-    <div class="search-box">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search for courses..."
-      />
-      <button onclick="searchCourses()">Search</button>
-    </div>
-  </section>
-
-  <!-- Courses -->
-  <main class="container">
-
-    <div class="top-section">
-      <h2>Popular Courses</h2>
-
-      <select id="sortSelect" onchange="sortCourses()">
-        <option value="default">Sort By</option>
-        <option value="low">Price: Low to High</option>
-        <option value="high">Price: High to Low</option>
-      </select>
-    </div>
-
-    <!-- Categories -->
-    <div class="categories">
-      <button class="category active" onclick="filterCourses('all', this)">
-        All
-      </button>
-
-      <button class="category" onclick="filterCourses('development', this)">
-        Development
-      </button>
-
-      <button class="category" onclick="filterCourses('design', this)">
-        Design
-      </button>
-
-      <button class="category" onclick="filterCourses('data', this)">
-        Data Science
-      </button>
-
-      <button class="category" onclick="filterCourses('marketing', this)">
-        Marketing
-      </button>
-    </div>
-
-    <!-- Course Cards -->
-    <div class="course-grid" id="courseGrid">
-
-      <div class="course-card" data-category="development" data-price="49">
-        <div class="course-image html">HTML</div>
-
-        <div class="course-content">
-          <div class="course-category">Development</div>
-          <h3 class="course-title">Complete HTML & CSS Bootcamp</h3>
-          <p class="instructor">By John Smith</p>
-
-          <div class="rating">
-            ★★★★★ <span>(4.8) · 12,540 students</span>
-          </div>
-
-          <div class="course-footer">
-            <div class="price">$49</div>
-            <a href="#" class="enroll-btn">Enroll Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="course-card" data-category="development" data-price="59">
-        <div class="course-image python">PY</div>
-
-        <div class="course-content">
-          <div class="course-category">Development</div>
-          <h3 class="course-title">Python Programming Masterclass</h3>
-          <p class="instructor">By Sarah Johnson</p>
-
-          <div class="rating">
-            ★★★★★ <span>(4.9) · 18,230 students</span>
-          </div>
-
-          <div class="course-footer">
-            <div class="price">$59</div>
-            <a href="#" class="enroll-btn">Enroll Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="course-card" data-category="design" data-price="39">
-        <div class="course-image design">UI</div>
-
-        <div class="course-content">
-          <div class="course-category">Design</div>
-          <h3 class="course-title">UI/UX Design Fundamentals</h3>
-          <p class="instructor">By Emily Davis</p>
-
-          <div class="rating">
-            ★★★★☆ <span>(4.6) · 8,430 students</span>
-          </div>
-
-          <div class="course-footer">
-            <div class="price">$39</div>
-            <a href="#" class="enroll-btn">Enroll Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="course-card" data-category="development" data-price="69">
-        <div class="course-image javascript">JS</div>
-
-        <div class="course-content">
-          <div class="course-category">Development</div>
-          <h3 class="course-title">Modern JavaScript From Zero</h3>
-          <p class="instructor">By Michael Brown</p>
-
-          <div class="rating">
-            ★★★★★ <span>(4.8) · 15,120 students</span>
-          </div>
-
-          <div class="course-footer">
-            <div class="price">$69</div>
-            <a href="#" class="enroll-btn">Enroll Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="course-card" data-category="data" data-price="79">
-        <div class="course-image data">DATA</div>
-
-        <div class="course-content">
-          <div class="course-category">Data Science</div>
-          <h3 class="course-title">Data Science & Machine Learning</h3>
-          <p class="instructor">By David Wilson</p>
-
-          <div class="rating">
-            ★★★★★ <span>(4.9) · 21,450 students</span>
-          </div>
-
-          <div class="course-footer">
-            <div class="price">$79</div>
-            <a href="#" class="enroll-btn">Enroll Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="course-card" data-category="marketing" data-price="45">
-        <div class="course-image marketing">SEO</div>
-
-        <div class="course-content">
-          <div class="course-category">Marketing</div>
-          <h3 class="course-title">Digital Marketing & SEO</h3>
-          <p class="instructor">By Jessica Lee</p>
-
-          <div class="rating">
-            ★★★★☆ <span>(4.7) · 9,870 students</span>
-          </div>
-
-          <div class="course-footer">
-            <div class="price">$45</div>
-            <a href="#" class="enroll-btn">Enroll Now</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 LearnHub. All rights reserved.</p>
-  </footer>
-
-  <script>
-    const grid = document.getElementById("courseGrid");
-    const cards = Array.from(document.querySelectorAll(".course-card"));
-
-    function filterCourses(category, button) {
-      document.querySelectorAll(".category").forEach(btn => {
-        btn.classList.remove("active");
-      });
-
-      button.classList.add("active");
-
-      cards.forEach(card => {
-        if (
-          category === "all" ||
-          card.dataset.category === category
-        ) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
+        color: #222;
     }
 
-    function searchCourses() {
-      const search =
-        document.getElementById("searchInput").value.toLowerCase();
-
-      cards.forEach(card => {
-        const title =
-          card.querySelector(".course-title").textContent.toLowerCase();
-
-        const category =
-          card.querySelector(".course-category").textContent.toLowerCase();
-
-        if (title.includes(search) || category.includes(search)) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
+    .heading p {
+        color: #555;
+        font-size: 18px;
     }
 
-    function sortCourses() {
-      const sortValue =
-        document.getElementById("sortSelect").value;
-
-      let sortedCards = [...cards];
-
-      if (sortValue === "low") {
-        sortedCards.sort(
-          (a, b) => a.dataset.price - b.dataset.price
-        );
-      }
-
-      if (sortValue === "high") {
-        sortedCards.sort(
-          (a, b) => b.dataset.price - a.dataset.price
-        );
-      }
-
-      sortedCards.forEach(card => grid.appendChild(card));
+    .courses {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        padding: 30px;
+        flex-wrap: wrap;
     }
-  </script>
 
-</body>
-</html>
+    .card {
+        background-color: white;
+        padding: 25px;
+        width: 250px;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px #ccc;
+    }
+
+    .card h3 {
+        color: #2563eb;
+        font-size: 22px;
+    }
+
+    .card p {
+        color: #555;
+        line-height: 1.5;
+    }
+
+    .card button {
+        padding: 10px 20px;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .card button:hover {
+        background-color: #1d4ed8;
+    }
+
+    footer {
+        background-color: #222;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: 30px;
+    }
+</style>
