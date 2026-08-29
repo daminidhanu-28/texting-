@@ -1,3 +1,143 @@
 body {
-    background-color: yellow !important;
+font-family: Arial, sans-serif;
+margin: 0;
+background-color: #f4f6f8;
+color: #222;
+}
+
+/* Header */
+header {
+background-color: #2563eb;
+color: white;
+padding: 25px;
+text-align: center;
+}
+
+header h1 {
+margin: 0;
+font-size: 32px;
+}
+
+header p {
+margin-bottom: 0;
+font-size: 17px;
+}
+
+/* Navigation */
+nav {
+background-color: white;
+padding: 15px;
+text-align: center;
+box-shadow: 0 2px 5px #ddd;
+}
+
+nav a {
+text-decoration: none;
+color: #2563eb;
+margin: 20px;
+font-size: 18px;
+font-weight: bold;
+}
+
+nav a:hover {
+color: #1d4ed8;
+}
+
+/* Homepage */
+.home {
+text-align: center;
+padding: 60px 20px;
+}
+
+.home h2 {
+font-size: 36px;
+color: #2563eb;
+}
+
+.home p {
+font-size: 18px;
+color: #555;
+}
+
+/* Search */
+.search {
+padding: 12px;
+width: 350px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 16px;
+}
+
+/* Buttons */
+button {
+padding: 12px 25px;
+background-color: #2563eb;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+}
+
+button:hover {
+background-color: #1d4ed8;
+}
+
+/* Course section */
+.courses {
+display: flex;
+justify-content: center;
+gap: 25px;
+padding: 40px;
+flex-wrap: wrap;
+}
+
+/* Course cards */
+.card {
+background-color: white;
+padding: 25px;
+width: 250px;
+text-align: center;
+border-radius: 10px;
+box-shadow: 0 3px 10px #ccc;
+}
+
+.card:hover {
+transform: translateY(-5px);
+box-shadow: 0 6px 15px #bbb;
+}
+
+.card h3 {
+color: #2563eb;
+font-size: 22px;
+}
+
+.card p {
+color: #555;
+line-height: 1.6;
+}
+
+/* Courses page heading */
+.heading {
+text-align: center;
+padding: 40px 20px 10px;
+}
+
+.heading h2 {
+font-size: 36px;
+color: #2563eb;
+}
+
+.heading p {
+color: #555;
+font-size: 18px;
+}
+
+/* Footer */
+footer {
+background-color: #222;
+color: white;
+text-align: center;
+padding: 15px;
+margin-top: 30px;
 }
