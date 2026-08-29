@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Online Courses</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background-color: #f4f6f8;
+        }
+
+        header {
+            background-color: #2563eb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2563eb;
+            margin: 20px;
+            font-size: 18px;
+        }
+
+        .home {
+            text-align: center;
+            padding: 60px;
+        }
+
+        .home h2 {
+            font-size: 32px;
+        }
+
+        .search {
+            padding: 12px;
+            width: 350px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .courses {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            width: 200px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #ccc;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Online Courses</h1>
+        <p>Learn new skills from anywhere</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <section class="home">
+        <h2>Welcome Students!</h2>
+        <p>Explore our online courses and start learning today.</p>
+
+        <input class="search" type="text" placeholder="Search for a course">
+        <button onclick="location.href='courses.html'">Search</button>
+
+        <br><br>
+
+        <button onclick="location.href='courses.html'">Courses</button>
+    </section>
+
+    <section class="courses">
+        <div class="card">
+            <h3>Web Development</h3>
+            <p>Learn HTML, CSS and JavaScript.</p>
+        </div>
+
+        <div class="card">
+            <h3>Python</h3>
+            <p>Learn Python programming from basics.</p>
+        </div>
+
+        <div class="card">
+            <h3>Data Science</h3>
+            <p>Learn data analysis and visualization.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Student Online Courses</p>
+    </footer>
+
+</body>
+</html>
